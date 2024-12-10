@@ -237,14 +237,14 @@ h6 {
     background: transparent;
   }
 
-  .navmenu li:hover>a>button,
+  .navmenu li:hover>a,
   .navmenu .active,
   .navmenu .active:focus {
     border: 2px solid var(--nav-hover-color);
     border-radius: 4px;
     padding: 5px 15px;
     background: transparent;
-    /* transition: 0.3s; */
+    transition: 0.3s;
   }
 
   .navmenu .dropdown ul {
@@ -265,6 +265,7 @@ h6 {
 
   .navmenu .dropdown ul li {
     min-width: 200px;
+    
   }
 
   .navmenu .dropdown ul a {
@@ -440,16 +441,70 @@ h6 {
   background-color: var(--default-color);
   font-size: 14px;
   text-align: center;
-  padding: 30px 0;
+  padding: 20px 40px;
   position: relative;
 }
 
 .footer .container  {
   position: relative;
+  display: flex;
+  justify-content: space-between; /* Membagi elemen secara horizontal */
+  align-items: flex-start; /* Posisi elemen sejajar atas */
+  flex-wrap: nowrap; /* Tidak membungkus elemen */
+  gap: 20px; /* Jarak antar elemen */
+}
+
+/* Bagian Kiri: Logo dan Deskripsi */
+.footer .d-flex {
+  display: flex;
+  align-items: flex-start;
+  margin-left: 70px;
+}
+
+.footer .footer-logo {
+  max-width: 40px; /* Sesuaikan ukuran logo */
+  margin-right: 15px;
+}
+
+.footer .footer-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  border-bottom: 3px var(--background-color);
+}
+
+
+/* Bagian Kanan: Stay Connected */
+.footer .contact-info {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .contact-info li {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.footer .contact-info li i {
+  font-size: 18px;
+  color: var(--accent-color); /* Ikon dengan warna oranye */
+  margin-right: 10px;
+}
+
+.footer a {
+  color: var(--background-color);
+  text-decoration: none;
+  text-align: left;
+}
+
+.footer a:hover {
+  text-decoration: underline;
 }
 
 .footer img {
-  max-height: 50px;
+  width: 50px;
+  height: auto;
 }
 
 .footer .highlight {
@@ -462,8 +517,9 @@ h6 {
   font-weight: 700;
   position: relative;
   text-align: left;
-  padding: 0;
-  margin: 0 0 15px 0;
+  margin-bottom: 10px;
+  border-bottom: 6px solid color-mix(in srgb, var(--accent-color), transparent 90%);
+
 }
 
 .footer h3 {
@@ -478,14 +534,28 @@ h6 {
   width: 25vw;
   font-size: 15;
   font-style: italic;
-  padding: 0 50px;
   text-align: left;
-  margin: 0 0 30px 0;
 }
 
 .footer .social-media {
   width: 25vw;
+}
+.footer .social-media h2 {
+  margin-bottom: 10px;
+  border-bottom: 6px solid color-mix(in srgb, var(--accent-color), transparent 90%);
+}
 
+.footer .social-media p {
+  margin: 5px 0;
+}
+
+.footer .social-media a {
+  color: #ffa500; /* Warna ikon */
+  text-decoration: none; /* Hilangkan garis bawah */
+}
+
+.footer .social-media a:hover {
+  text-decoration: underline; /* Efek hover */
 }
 
 .footer .social-links {
@@ -521,6 +591,7 @@ h6 {
 .footer .credits {
   font-size: 13px;
   padding-top: 5px;
+  color: var(--accent-color);
 }
 
 /*--------------------------------------------------------------
@@ -564,15 +635,14 @@ h6 {
 .scroll-top {
   position: fixed;
   visibility: hidden;
-  opacity: 0;
   right: 15px;
   bottom: 15px;
   z-index: 99999;
-  background-color: var(--accent-color);
   width: 40px;
   height: 40px;
   border-radius: 4px;
   transition: all 0.4s;
+  background-color: var(--accent-color);
 }
 
 .scroll-top i {
@@ -828,6 +898,158 @@ section,
 .about .content p:last-child {
   margin-bottom: 0;
 }
+
+
+/* coba slideshow */
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.mySlides {
+  display: none; /* Sembunyikan semua slide secara default */
+}
+
+.mySlides.active {
+  display: block;
+}
+
+.mySlides img {
+  width: 10%;
+  height: 10%;
+}
+
+/* Container for the gallery grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* 1 equal columns */
+  gap: 5px; /* Space between images */
+  padding: 10px;
+}
+
+/* Styling each gallery item */
+.gallery-item {
+  position:static;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* Make the images fill the container */
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect for images */
+.gallery-item img:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.mySlides p {
+  text-align: justify;
+}
+
+.mySlides > .section-title>p {
+  text-align: center;
+}
+
+
+.my-fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: var(--accent-color);
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: var(--accent-color);
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+
 
 /*--------------------------------------------------------------
 # Location Section
@@ -1517,11 +1739,4 @@ section,
   font-size: 20px;
   margin-right: 8px;
   color: var(--accent-color);
-}
-
-/*--------------------------------------------------------------
-# Starter Section Section
---------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
 }
