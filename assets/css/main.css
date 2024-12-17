@@ -12,29 +12,41 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Playfair Display",  sans-serif;
-  --nav-font: "Poppins",  sans-serif;
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Playfair Display", sans-serif;
+  --nav-font: "Poppins", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #000000; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #000000; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #FCA311; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #0f0f0f; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+:root {
+  --background-color: #ffffff;
+  /* Background color for the entire website, including individual sections */
+  --default-color: #000000;
+  /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #000000;
+  /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #FCA311;
+  /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #ffffff;
+  /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #0f0f0f;
+  /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: rgba(255, 255, 255, 0.6);  /* The default color of the main navmenu links */
-  --nav-hover-color: #FCA311; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #E5E5E5; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #E5E5E5; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #000000; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #FCA311; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-color: rgba(255, 255, 255, 0.6);
+  /* The default color of the main navmenu links */
+  --nav-hover-color: #FCA311;
+  /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #797676e9;
+  /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #0000009f;
+  /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #000000;
+  /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #FCA311;
+  /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
@@ -248,13 +260,13 @@ h6 {
   }
 
   .navmenu .dropdown ul {
-    margin: 0;
+    margin: 10px;
     padding: 10px 0;
     background: var(--nav-dropdown-background-color);
     display: block;
     position: absolute;
     visibility: hidden;
-    left: 14px;
+    left: -30px;
     top: 130%;
     opacity: 0;
     transition: 0.3s;
@@ -264,8 +276,12 @@ h6 {
   }
 
   .navmenu .dropdown ul li {
-    min-width: 200px;
-    
+    min-width: 150px;
+  }
+
+  .navmenu .dropdown ul li a button {
+    min-width: 100px;
+    align-items: center;
   }
 
   .navmenu .dropdown ul a {
@@ -304,6 +320,7 @@ h6 {
     left: -100%;
     visibility: visible;
   }
+  
 }
 
 /* Navmenu - Mobile */
@@ -337,10 +354,18 @@ h6 {
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   }
 
+  .navmenu button {
+    border: 2px;
+    border-radius: 2px;
+    color: var(--surface-color);
+    background: transparent;
+    font-style: var(--nav-dropdown-background-color);
+  }
+
   .navmenu a,
   .navmenu a:focus {
     color: var(--nav-dropdown-color);
-    padding: 10px 20px;
+    padding: 15px 20px;
     font-family: var(--nav-font);
     font-size: 17px;
     font-weight: 500;
@@ -363,24 +388,27 @@ h6 {
     justify-content: center;
     border-radius: 50%;
     transition: 0.3s;
-    background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+    background-color: var(--surface-color);
+    /* color: var(--nav-dropdown-color);
+    background: var(--nav-dropdown-hover-color); */
   }
 
   .navmenu a i:hover,
   .navmenu a:focus i:hover {
-    background-color: var(--accent-color);
+    background-color: var(--surface-color);
     color: var(--contrast-color);
   }
 
   .navmenu a:hover,
   .navmenu .active,
   .navmenu .active:focus {
-    color: var(--nav-dropdown-hover-color);
+    color: var(--background-color);
+    background-color: var(--nav-hover-color);
   }
 
   .navmenu .active i,
   .navmenu .active:focus i {
-    background-color: var(--accent-color);
+    background-color: var(--surface-color);
     color: var(--contrast-color);
     transform: rotate(180deg);
   }
@@ -391,8 +419,7 @@ h6 {
     z-index: 99;
     padding: 10px 0;
     margin: 10px 20px;
-    background-color: var(--nav-dropdown-background-color);
-    border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    border: 3px solid color-mix(in srgb, var(--default-color), transparent 90%);
     box-shadow: none;
     transition: all 0.5s ease-in-out;
   }
@@ -445,24 +472,41 @@ h6 {
   position: relative;
 }
 
-.footer .container  {
+.footer .container {
   position: relative;
   display: flex;
-  justify-content: space-between; /* Membagi elemen secara horizontal */
-  align-items: flex-start; /* Posisi elemen sejajar atas */
-  flex-wrap: nowrap; /* Tidak membungkus elemen */
-  gap: 20px; /* Jarak antar elemen */
+  justify-content: space-between;
+  /* Membagi elemen secara horizontal */
+  align-items: flex-start;
+  /* Posisi elemen sejajar atas */
+  flex-wrap: nowrap;
+  /* Tidak membungkus elemen */
+  gap: 20px;
+  /* Jarak antar elemen */
+}
+
+.footer .row  {
+  display: flex;
+  justify-content: space-between;
+  /* Membagi elemen secara horizontal */
+  align-items: flex-start;
+  /* Posisi elemen sejajar atas */
+  flex-wrap: nowrap;
+  /* Tidak membungkus elemen */
+  gap: 20px;
+  /* Jarak antar elemen */
 }
 
 /* Bagian Kiri: Logo dan Deskripsi */
 .footer .d-flex {
   display: flex;
   align-items: flex-start;
-  margin-left: 70px;
+  margin-left: 50px;
 }
 
 .footer .footer-logo {
-  max-width: 40px; /* Sesuaikan ukuran logo */
+  max-width: 40px;
+  /* Sesuaikan ukuran logo */
   margin-right: 15px;
 }
 
@@ -488,7 +532,8 @@ h6 {
 
 .footer .contact-info li i {
   font-size: 18px;
-  color: var(--accent-color); /* Ikon dengan warna oranye */
+  color: var(--accent-color);
+  /* Ikon dengan warna oranye */
   margin-right: 10px;
 }
 
@@ -540,6 +585,7 @@ h6 {
 .footer .social-media {
   width: 25vw;
 }
+
 .footer .social-media h2 {
   margin-bottom: 10px;
   border-bottom: 6px solid color-mix(in srgb, var(--accent-color), transparent 90%);
@@ -550,12 +596,15 @@ h6 {
 }
 
 .footer .social-media a {
-  color: #ffa500; /* Warna ikon */
-  text-decoration: none; /* Hilangkan garis bawah */
+  color: #ffa500;
+  /* Warna ikon */
+  text-decoration: none;
+  /* Hilangkan garis bawah */
 }
 
 .footer .social-media a:hover {
-  text-decoration: underline; /* Efek hover */
+  text-decoration: underline;
+  /* Efek hover */
 }
 
 .footer .social-links {
@@ -592,6 +641,18 @@ h6 {
   font-size: 13px;
   padding-top: 5px;
   color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  .footer .d-flex {
+    margin-left: 0;
+    align-items: justify;
+    margin-bottom: 20px;
+  }
+
+  .footer p {
+    width: 100%;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -659,6 +720,7 @@ h6 {
 .scroll-top.active {
   visibility: visible;
   opacity: 1;
+  background-color: var(--accent-color);
 }
 
 /*--------------------------------------------------------------
@@ -723,7 +785,8 @@ section,
 .section {
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 60px 0;
+  padding: 30px 0;
+  margin-bottom: 60px;
   scroll-margin-top: 80px;
   overflow: clip;
 }
@@ -776,6 +839,7 @@ section,
   height: 100%;
   object-fit: cover;
   z-index: 1;
+  filter: brightness(30%);
 }
 
 .hero:before {
@@ -849,24 +913,21 @@ section,
 
   .hero p {
     font-size: 16px;
-    width: 45vw;
+    width: 50vw;
+    text-align: justify;
   }
+
+  
 }
 
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
-.about .profile-img {
-  border: 20px solid var(--accent-color);
-  padding: 0;
-}
 
-.about .profile-img img {
-  margin-top: -60px;
-  margin-left: 40px;
-  margin-bottom: 40px;
-  position: relative;
-  z-index: 1;
+.about {
+  width: 100%;
+  height: 100%;
+  padding: 0;
 }
 
 .about .content h3 {
@@ -899,27 +960,31 @@ section,
   margin-bottom: 0;
 }
 
+.about .highlight {
+  color: var(--accent-color);
+}
 
 /* coba slideshow */
-* {box-sizing: border-box}
-body {font-family: Verdana, sans-serif; margin:0}
-.mySlides {display: none}
-img {vertical-align: middle;}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Verdana, sans-serif;
+  margin: 0
+}
+
+img {
+  vertical-align: middle;
+}
 
 /* Slideshow container */
 .slideshow-container {
   position: relative;
-  margin: auto;
   width: 100%;
   height: 100%;
-}
-
-.mySlides {
-  display: none; /* Sembunyikan semua slide secara default */
-}
-
-.mySlides.active {
-  display: block;
 }
 
 .mySlides img {
@@ -927,17 +992,27 @@ img {vertical-align: middle;}
   height: 10%;
 }
 
+.mySlides {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /* Container for the gallery grid */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr); /* 1 equal columns */
-  gap: 5px; /* Space between images */
-  padding: 10px;
+  grid-template-columns: repeat(1, 1fr);
+  /* 1 equal columns */
+  gap: 5px;
+  /* Space between images */
+  justify-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 /* Styling each gallery item */
 .gallery-item {
-  position:static;
+  position: relative;
   overflow: hidden;
   border-radius: 8px;
 }
@@ -945,33 +1020,73 @@ img {vertical-align: middle;}
 /* Make the images fill the container */
 .gallery-item img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 
 /* Hover effect for images */
 .gallery-item img:hover {
-  transform: scale(1.05); /* Slight zoom effect on hover */
+  transform: scale(1.05);
+  /* Slight zoom effect on hover */
 }
 
 .mySlides p {
   text-align: justify;
+  padding-left: 50px;
 }
 
-.mySlides > .section-title>p {
+.mySlides.about.section {
+  margin-bottom: 0;
+}
+
+.mySlides h2 {
+  padding-left: 50px;
+}
+
+.mySlides h1 {
+  padding-left: 50px;
+}
+
+.mySlides>.section-title>p {
   text-align: center;
 }
-
 
 .my-fade {
   animation-name: fade;
   animation-duration: 1.5s;
 }
 
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  /* Supaya elemen tidak keluar dari barisan */
+  justify-content: space-between;
+  /* Ruang antar elemen */
+  align-items: center;
+  /* Atur vertikal */
+}
+
+.row img {
+  flex: 1 1 auto;
+  /* Gambar akan menyesuaikan ukuran */
+  max-width: 100%;
+  /* Batas ukuran maksimum */
+}
+
+.d-flex.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+}
+
+.about .section-title {
+  padding-bottom: 0;
+}
 
 /* Next & previous buttons */
-.prev, .next {
+.prev,
+.next {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -993,8 +1108,9 @@ img {vertical-align: middle;}
 }
 
 /* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* Caption text */
@@ -1029,7 +1145,8 @@ img {vertical-align: middle;}
   transition: background-color 0.6s ease;
 }
 
-.active, .dot:hover {
+.active,
+.dot:hover {
   background-color: #717171;
 }
 
@@ -1040,77 +1157,163 @@ img {vertical-align: middle;}
 }
 
 @keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
+  }
 }
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
+
+  .prev,
+  .next,
+  .text {
+    font-size: 11px
+  }
 }
 
+@media (min-width: 100px) and (min-width: 400px) and (max-width: 768px) and (max-width: 900px) {
+  .slideshow-container .section-title {
+    text-align: center;
+    width: 100%;
+    height: 100%;;
+  }
 
+  .about .container,
+  .journey .container {
+    margin-top: 40px;
+    margin-left: 0;
+  }
 
-/*--------------------------------------------------------------
-# Location Section
+  .about p,
+  .journey p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-right: 45px;
+  }
+
+  .about h2,
+  .journey h2 {
+    margin-right: 45px;
+  }
+
+  .about h1{
+    font-size: 30px;
+    margin-top: 20px;
+    margin-right: 45px;
+  }
+
+  .about img,
+  .journey img {
+    display: none;
+  } 
+
+  .about .d-flex.row,
+  .journey .d-flex.row {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  /* Next & previous buttons */
+  .prev,
+  .next {
+    cursor: pointer;
+    position:absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+}
+
+.info-container,
+    .map-container {
+      max-width: 600px;
+
+      color: black; /* Warna teks hitam untuk kontainer */
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      padding: 20px;
+      margin: 0 auto;
+    }
+
+    .info-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .info-container h2 {
+      color: #f39c12;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      size:10px;
+      gap: 10px;
+    }
+
+    .info-container .btn {
+      margin-top: 10px;
+      background-color: #d87c04;
+      color: white;
+      border: none;
+    }
+
+    .info-container .btn:hover {
+      background-color: #d87c04;
+    }
+
+    .map-container iframe {
+      width: 140%;
+      height: 550px;
+      border: 0;
+      border-radius: 10px;
+    }
+
+    section .row.mt-4 div {
+      font-size: 0.9rem;
+    }
+
+    section .row.mt-4 h5 {
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .info-container,
+      .map-container {
+        max-width: 100%; /* Pastikan kontainer menyesuaikan layar kecil */
+      }
+    }
+
+    /*--------------------------------------------------------------
+    # Employees Section
 --------------------------------------------------------------*/
-.location .service-item {
-  position: relative;
-  height: 100%;
-  margin-bottom: 30px;
+.employees {
+  background: url('assets/img/home-bg.png'); /* Path yang benar */
+  background-size: cover; /* Menyesuaikan gambar dengan area */
+  background-position: center; /* Posisi gambar di tengah */
+  padding: 50px;
 }
 
-.location .service-item .icon {
-  margin-right: 20px;
-}
-
-.location .service-item .icon i {
-  color: var(--accent-color);
-  font-size: 40px;
-  line-height: 0;
-  transition: 0.3s;
-}
-
-.location .service-item:hover .icon i {
-  color: var(--accent-color);
-}
-
-.location .service-item .title {
-  color: var(--heading-color);
-  font-weight: 700;
-  margin-bottom: 10px;
-  font-size: 20px;
-  transition: 0.3s;
-}
-
-.location .service-item .description {
-  font-size: 15px;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-  margin-bottom: 10px;
-}
-
-.location .service-item .readmore {
-  display: flex;
-  align-items: center;
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
-  transition: 0.3s;
-  font-weight: 700;
-  font-size: 14px;
-}
-
-.location .service-item .readmore i {
-  margin-left: 8px;
-}
-
-.location .service-item:hover .title,
-.location .service-item:hover .readmore,
-.location .service-item:hover .icon i {
-  color: var(--accent-color);
-}
-
-/*--------------------------------------------------------------
-# Employees Section
---------------------------------------------------------------*/
 .employees .section-header {
   margin-bottom: 40px;
 }
@@ -1122,7 +1325,15 @@ img {vertical-align: middle;}
 
 .employees .testimonial-item {
   text-align: center;
+  position: relative;
+  padding: 20px; /* Tambahkan ruang di dalam border */
+  border: 2px solid rgba(0, 0, 0, 0.2); /* Border khusus pada tiap testimonial */
+  border-radius: 15px; /* Membuat sudut border lebih halus */
+  background: rgba(255, 255, 255, 0.8); /* Tambahkan background transparan untuk kontras */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan agar lebih menonjol */
+  margin-bottom: 30px; /* Memberi jarak antar testimonial */
 }
+
 
 .employees .testimonial-item .testimonial-img {
   width: 120px;
@@ -1205,538 +1416,327 @@ img {vertical-align: middle;}
 }
 
 /*--------------------------------------------------------------
-# Partnership Section
---------------------------------------------------------------*/
+/* Partnership Section */
+.partnership {
+  padding: 60px 0;
+  background-color: #f8f9fa; /* Light background */
+}
+
+.partnership .section-title h2 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  text-align: center; /* Memusatkan judul */
+  margin-bottom: 20px;
+}
+
+.partnership .section-title p {
+  font-size: 18px;
+  color: #666;
+  text-align: center; /* Memusatkan deskripsi */
+  margin-bottom: 40px;
+}
+
 .partnership .portfolio-filters {
-  padding: 0;
-  margin: 0 auto 20px auto;
-  list-style: none;
+  margin-bottom: 30px;
   text-align: center;
 }
 
 .partnership .portfolio-filters li {
   cursor: pointer;
   display: inline-block;
-  padding: 0;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   margin: 0 10px;
-  line-height: 1;
-  margin-bottom: 5px;
+  color: #555;
+  padding: 5px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
   transition: all 0.3s ease-in-out;
 }
 
 .partnership .portfolio-filters li:hover,
 .partnership .portfolio-filters li.filter-active {
-  color: var(--accent-color);
+  color: #fff;
+  background-color: var(--accent-color); /* Primary color */
+  border-color: var(--accent-color);
 }
 
-.partnership .portfolio-filters li:first-child {
-  margin-left: 0;
-}
-
-.partnership .portfolio-filters li:last-child {
-  margin-right: 0;
-}
-
-@media (max-width: 575px) {
-  .partnership .portfolio-filters li {
-    font-size: 14px;
-    margin: 0 5px;
-  }
+.partnership .portfolio-wrapper {
+  display: grid; /* Menggunakan grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px; /* Jarak antar item */
+  justify-content: center;
 }
 
 .partnership .portfolio-content {
   position: relative;
+  border: 1px solid #ddd;
+  border-radius: 8px;
   overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.partnership .portfolio-content:hover {
+  transform: scale(1.05);
 }
 
 .partnership .portfolio-content img {
-  transition: 0.3s;
-}
-
-.partnership .portfolio-content .portfolio-info {
-  opacity: 0;
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  transition: all ease-in-out 0.3s;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 15px;
-}
-
-.partnership .portfolio-content .portfolio-info h4 {
-  font-size: 14px;
-  padding: 5px 10px;
-  font-weight: 400;
-  color: #ffffff;
-  display: inline-block;
-  background-color: var(--accent-color);
-}
-
-.partnership .portfolio-content .portfolio-info p {
-  position: absolute;
-  bottom: 10px;
-  text-align: center;
-  display: inline-block;
-  left: 0;
-  right: 0;
-  font-size: 16px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.partnership .portfolio-content .portfolio-info .preview-link,
-.partnership .portfolio-content .portfolio-info .details-link {
-  position: absolute;
-  left: calc(50% - 40px);
-  font-size: 26px;
-  top: calc(50% - 14px);
-  color: #fff;
-  transition: 0.3s;
-  line-height: 1.2;
-}
-
-.partnership .portfolio-content .portfolio-info .preview-link:hover,
-.partnership .portfolio-content .portfolio-info .details-link:hover {
-  color: var(--accent-color);
-}
-
-.partnership .portfolio-content .portfolio-info .details-link {
-  left: 50%;
-  font-size: 34px;
-  line-height: 0;
-}
-
-.partnership .portfolio-content:hover .portfolio-info {
-  opacity: 1;
+  width: 100%;
+  height: 250px; /* Fixed height */
+  object-fit: cover; /* Menghindari distorsi gambar */
+  transition: transform 0.3s ease-in-out;
 }
 
 .partnership .portfolio-content:hover img {
   transform: scale(1.1);
 }
 
-/*--------------------------------------------------------------
-# News Section
---------------------------------------------------------------*/
-.news .pricing-item {
-  background-color: color-mix(in srgb, var(--accent-color), transparent 96%);
-  padding: 40px 40px;
-  height: 100%;
-  border-radius: 15px;
-}
-
-.news h3 {
-  font-weight: 600;
-  margin-bottom: 15px;
-  font-size: 20px;
-}
-
-.news h4 {
-  color: var(--accent-color);
-  font-size: 48px;
-  font-weight: 700;
-  font-family: var(--heading-font);
-  margin-bottom: 0;
-}
-
-.news h4 sup {
-  font-size: 28px;
-}
-
-.news h4 span {
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.news .description {
-  font-size: 14px;
-}
-
-.news .cta-btn {
-  border: 1px solid var(--default-color);
-  color: var(--default-color);
-  display: block;
-  text-align: center;
-  padding: 10px 35px;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: 500;
-  font-family: var(--heading-font);
-  transition: 0.3s;
-  margin-top: 20px;
-  margin-bottom: 6px;
-}
-
-.news .cta-btn:hover {
-  background: var(--accent-color);
-  color: var(--contrast-color);
-  border-color: var(--accent-color);
-}
-
-.news ul {
-  padding: 0;
-  list-style: none;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-  text-align: left;
-  line-height: 20px;
-}
-
-.news ul li {
-  padding: 10px 0;
-  display: flex;
-  align-items: center;
-}
-
-.news ul li:last-child {
-  padding-bottom: 0;
-}
-
-.news ul i {
-  color: #059652;
-  font-size: 24px;
-  padding-right: 3px;
-}
-
-.news ul .na {
-  color: color-mix(in srgb, var(--default-color), transparent 60%);
-}
-
-.news ul .na i {
-  color: color-mix(in srgb, var(--default-color), transparent 60%);
-}
-
-.news ul .na span {
-  text-decoration: line-through;
-}
-
-.news .featured {
-  position: relative;
-}
-
-.news .featured .popular {
+.partnership .portfolio-info {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  background-color: var(--accent-color);
-  color: var(--contrast-color);
-  padding: 4px 15px 6px 15px;
-  margin: 0;
-  border-radius: 5px;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.news .featured .cta-btn {
-  background: var(--accent-color);
-  color: var(--contrast-color);
-  border-color: var(--accent-color);
-}
-
-@media (max-width: 992px) {
-  .news .box {
-    max-width: 60%;
-    margin: 0 auto 30px auto;
-  }
-}
-
-@media (max-width: 767px) {
-  .news .box {
-    max-width: 80%;
-    margin: 0 auto 30px auto;
-  }
-}
-
-@media (max-width: 420px) {
-  .news .box {
-    max-width: 100%;
-    margin: 0 auto 30px auto;
-  }
-}
-
-/*--------------------------------------------------------------
-# Contact Section
---------------------------------------------------------------*/
-.contact .info-wrap {
-  background-color: var(--surface-color);
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  margin-bottom: 30px;
-}
-
-.contact .info-item i {
-  font-size: 20px;
-  color: var(--accent-color);
-  width: 56px;
-  height: 56px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  color: #fff;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: all 0.3s ease-in-out;
-  border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 40%);
-  margin-right: 15px;
+  transition: opacity 0.3s ease-in-out;
 }
 
-.contact .info-item h3 {
-  font-size: 18px;
-  font-weight: 700;
-  margin: 0 0 2px 0;
-}
-
-.contact .info-item p {
-  padding: 0;
-  margin-bottom: 0;
-  font-size: 14px;
-}
-
-.contact .info-item:hover i {
-  background: var(--accent-color);
-  color: var(--contrast-color);
-}
-
-.contact .php-email-form {
-  background-color: var(--surface-color);
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-}
-
-@media (max-width: 575px) {
-  .contact .php-email-form {
-    padding: 20px;
-  }
-}
-
-.contact .php-email-form input[type=text],
-.contact .php-email-form input[type=email],
-.contact .php-email-form textarea {
-  font-size: 14px;
-  padding: 10px 15px;
-  box-shadow: none;
-  border-radius: 0;
-  color: var(--default-color);
-  background-color: color-mix(in srgb, var(--background-color), transparent 50%);
-  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
-}
-
-.contact .php-email-form input[type=text]:focus,
-.contact .php-email-form input[type=email]:focus,
-.contact .php-email-form textarea:focus {
-  border-color: var(--accent-color);
-}
-
-.contact .php-email-form input[type=text]::placeholder,
-.contact .php-email-form input[type=email]::placeholder,
-.contact .php-email-form textarea::placeholder {
-  color: color-mix(in srgb, var(--default-color), transparent 70%);
-}
-
-.contact .php-email-form button[type=submit] {
-  color: var(--contrast-color);
-  background: var(--accent-color);
-  border: 0;
-  padding: 10px 30px;
-  transition: 0.4s;
-  border-radius: 50px;
-}
-
-.contact .php-email-form button[type=submit]:hover {
-  background: color-mix(in srgb, var(--accent-color), transparent 20%);
-}
-
-/*--------------------------------------------------------------
-# Portfolio Details Section
---------------------------------------------------------------*/
-.portfolio-details .portfolio-details-slider img {
-  width: 100%;
-}
-
-.portfolio-details .portfolio-details-slider .swiper-pagination {
-  margin-top: 20px;
-  position: relative;
-}
-
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: color-mix(in srgb, var(--default-color), transparent 85%);
+.partnership .portfolio-content:hover .portfolio-info {
   opacity: 1;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: var(--accent-color);
+.partnership .portfolio-info h4 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 5px 10px;
+  border-radius: 4px;
 }
 
-.portfolio-details .portfolio-info {
-  background-color: var(--surface-color);
-  padding: 30px;
-  box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
+.partnership .portfolio-info p {
+  font-size: 14px;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
-.portfolio-details .portfolio-info h3 {
-  font-size: 22px;
-  font-weight: 700;
+.partnership .portfolio-info .preview-link,
+.partnership .portfolio-info .details-link {
+  font-size: 24px;
+  margin: 0 8px;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+.partnership .portfolio-info .preview-link:hover,
+.partnership .portfolio-info .details-link:hover {
+  color: var(--accent-color); /* Accent color */
+}
+
+/* Tambahan untuk Responsif */
+@media (max-width: 768px) {
+  .partnership .section-title h2 {
+    font-size: 28px;
+  }
+
+  .partnership .section-title p {
+    font-size: 16px;
+  }
+
+  .partnership .portfolio-content img {
+    height: 200px;
+  }
+}
+
+@media (max-width: 576px) {
+  .partnership .portfolio-filters li {
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+
+  .partnership .portfolio-content img {
+    height: 180px;
+  }
+
+  .partnership .portfolio-info h4 {
+    font-size: 16px;
+  }
+
+  .partnership .portfolio-info p {
+    font-size: 12px;
+  }
+}
+
+/* General Section Styling */
+.news {
+  padding: 50px 0 50px 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+
+.section-title {
+  text-align: center;
   margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
 }
 
-.portfolio-details .portfolio-info ul {
-  list-style: none;
-  padding: 0;
-  font-size: 15px;
+.section-title h2 {
+  font-size: 2rem;
+  font-weight: bold;
 }
 
-.portfolio-details .portfolio-info ul li+li {
-  margin-top: 10px;
+.news-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.portfolio-details .portfolio-description {
-  padding-top: 30px;
+.cardd {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  text-align: left;
+  width: 30%;
 }
 
-.portfolio-details .portfolio-description h2 {
-  font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 20px;
+.cardd img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
 }
 
-.portfolio-details .portfolio-description p {
-  padding: 0;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
+.cardd-content {
+  background-color: #0b2545; /* Dark navy blue */
+  color: #ffffff;
+  padding: 15px;
+  min-height: 120px;
+  position: relative;
 }
 
-/*--------------------------------------------------------------
-# Service Details Section
---------------------------------------------------------------*/
-.service-details .service-box {
-  background-color: var(--surface-color);
-  padding: 20px;
-  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
+.cardd-content p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 50px;
+
 }
 
-.service-details .service-box+.service-box {
-  margin-top: 30px;
+.see-more {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background-color: #ff9f1c; /* Orange color */
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
-.service-details .service-box h4 {
-  font-size: 20px;
-  font-weight: 700;
-  border-bottom: 2px solid color-mix(in srgb, var(--default-color), transparent 92%);
-  padding-bottom: 15px;
+.see-more:hover {
+  background-color: #d87c04;
+}
+
+/* Artikel Utama */
+.main-news {
+  flex: 3;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.date-author {
+  font-size: 14px;
+  color: gray;
   margin-bottom: 15px;
 }
 
-.service-details .services-list {
-  background-color: var(--surface-color);
+.news-image {
+  width: 720px;
+  height: 400px;
+  object-fit: cover;
+  margin: 15px 0;
+  border-radius: 8px;
 }
 
-.service-details .services-list a {
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  background-color: color-mix(in srgb, var(--default-color), transparent 96%);
-  display: flex;
-  align-items: center;
-  padding: 12px 15px;
-  margin-top: 15px;
-  transition: 0.3s;
-}
-
-.service-details .services-list a:first-child {
-  margin-top: 0;
-}
-
-.service-details .services-list a i {
+.news-content {
   font-size: 16px;
-  margin-right: 8px;
-  color: var(--accent-color);
+  line-height: 1.6;
+  margin-bottom: 15px;
 }
 
-.service-details .services-list a.active {
-  color: var(--contrast-color);
-  background-color: var(--accent-color);
+/* Sidebar More News */
+.more-news {
+  flex: 1;
+  /* border-left: 1px solid #ddd; */
+  padding-left: 15px;
 }
 
-.service-details .services-list a.active i {
-  color: var(--contrast-color);
+.more-news h3 {
+  /* font-size: 20px;
+  margin-bottom: 10px; */
+  margin-bottom: 15px;
 }
 
-.service-details .services-list a:hover {
-  background-color: color-mix(in srgb, var(--accent-color), transparent 95%);
-  color: var(--accent-color);
+.more-news img {
+  width: 30%;
+  border-radius: 5px;
+  margin-bottom: 10px;;
 }
 
-.service-details .download-catalog a {
-  color: var(--default-color);
-  display: flex;
-  align-items: center;
-  padding: 10px 0;
-  transition: 0.3s;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+.thumbnail {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
-.service-details .download-catalog a:first-child {
-  border-top: 0;
-  padding-top: 0;
+.news-preview {
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 10px;
 }
 
-.service-details .download-catalog a:last-child {
-  padding-bottom: 0;
+.see-more-btn {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #ff9800;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
-.service-details .download-catalog a i {
-  font-size: 24px;
-  margin-right: 8px;
-  color: var(--accent-color);
+.see-more-btn:hover {
+  background-color: #e68900;
+  color: #fff;
 }
 
-.service-details .download-catalog a:hover {
-  color: var(--accent-color);
+.see-more-btn i {
+  margin-left: 5px;
 }
 
-.service-details .help-box {
-  background-color: var(--accent-color);
-  color: var(--contrast-color);
-  margin-top: 30px;
-  padding: 30px 15px;
+#seemore  {
+  padding: 1px;
+  background-color: black;
 }
 
-.service-details .help-box .help-icon {
-  font-size: 48px;
+.main-seemore { 
+padding-top: 100px;
+margin-left: 15px;
 }
 
-.service-details .help-box h4,
-.service-details .help-box a {
-  color: var(--contrast-color);
-}
-
-.service-details .services-img {
-  margin-bottom: 20px;
-}
-
-.service-details h3 {
-  font-size: 26px;
-  font-weight: 700;
-}
-
-.service-details p {
-  font-size: 15px;
-}
-
-.service-details ul {
-  list-style: none;
-  padding: 0;
-  font-size: 15px;
-}
-
-.service-details ul li {
-  padding: 5px 0;
-  display: flex;
-  align-items: center;
-}
-
-.service-details ul i {
-  font-size: 20px;
-  margin-right: 8px;
-  color: var(--accent-color);
-}

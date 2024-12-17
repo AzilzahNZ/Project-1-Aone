@@ -33,6 +33,7 @@
       slideIndex = slides.length; // Kembali ke slide terakhir
     }
 
+
     // Sembunyikan semua slide
     for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none"; // Pastikan semuanya tersembunyi
@@ -49,6 +50,32 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
+    // Navigasi berbasis ID
+    document.querySelectorAll('nav a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault(); // Mencegah scroll default
+
+        const targetId = link.getAttribute("href").substring(1); // Ambil ID
+        const targetElement = document.getElementById(targetId); // Cari elemen
+
+        if (targetElement) {
+          // Scroll ke elemen target
+          targetElement.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+
+          // Jika ID terkait slideshow, aktifkan slide
+          const slides = Array.from(document.getElementsByClassName("mySlides"));
+          const slideIndex = slides.findIndex((slide) => slide.id === targetId);
+
+          if (slideIndex !== -1) {
+            currentSlide(slideIndex + 1);
+          }
+        }
+      });
+    });
+
     // Menambahkan event listener untuk tombol navigasi dan dot
     document.querySelector(".prev").addEventListener("click", () => plusSlides(-1));
     document.querySelector(".next").addEventListener("click", () => plusSlides(1));
@@ -255,11 +282,18 @@
   let navmenulinks = document.querySelectorAll('.navmenu a');
 
   function navmenuScrollspy() {
+    // Deteksi jika berada di atas halaman (hero)
+    if (window.scrollY < 100) {
+      document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
+      document.querySelector('.navmenu a[href="#hero"]').classList.add('active');
+      return;
+    }
+
     navmenulinks.forEach(navmenulink => {
       if (!navmenulink.hash) return;
       let section = document.querySelector(navmenulink.hash);
       if (!section) return;
-      let position = window.scrollY + 200;
+      let position = window.scrollY + 100;
       if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
         document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
         navmenulink.classList.add('active');
@@ -270,7 +304,4 @@
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
-
-  
-
 })();
