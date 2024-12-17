@@ -653,6 +653,11 @@ h6 {
   .footer p {
     width: 100%;
   }
+
+  .footer .row {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 /*--------------------------------------------------------------
