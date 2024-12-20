@@ -155,6 +155,7 @@ h6 {
 # Global Header
 --------------------------------------------------------------*/
 .header {
+  position: fixed;
   --background-color: rgba(0, 0, 0, 0);
   --default-color: #ffffff;
   --heading-color: #ffffff;
@@ -643,7 +644,7 @@ h6 {
   color: var(--accent-color);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .footer .d-flex {
     margin-left: 0;
     align-items: justify;
@@ -911,58 +912,57 @@ section,
   color: var(--accent-color);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .hero h2 {
     font-size: 40px;
   }
 
   .hero p {
     font-size: 16px;
-    width: 50vw;
+    width: 70vw;
     text-align: justify;
   }
 
+  .hero .container {
+    text-align: left;
+    padding-left: 30px;
+  }
   
+  .hero button:hover {
+    font-weight: bolder;
+    padding: 10px 30px;
+  }
 }
 
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
+.main-about {
+  margin-bottom: 0;
 
-.about {
+}
+
+.slideshow-container {
+  position: relative;
+  margin: auto;
   width: 100%;
   height: 100%;
-  padding: 0;
 }
 
-.about .content h3 {
-  font-size: 1.75rem;
-  font-weight: 700;
+.about {
+  display: block;
+}
+ 
+.col-left {
+  padding-left: 30px;
+  padding-top: 30px;
+  padding-right: 30px;
 }
 
-.about .content .fst-italic {
-  color: color-mix(in srgb, var(--default-color), var(--contrast-color) 50%);
-}
-
-.about .content ul {
-  list-style: none;
-  padding: 0;
-}
-
-.about .content ul li {
-  padding: 10px 0 0 0;
-  display: flex;
-}
-
-.about .content ul i {
-  color: var(--accent-color);
-  margin-right: 0.5rem;
-  line-height: 1.2;
-  font-size: 1.25rem;
-}
-
-.about .content p:last-child {
-  margin-bottom: 0;
+.col-right {
+  padding-left: 30px;
+  padding-top: 30px;
+  padding-right: 30px;
 }
 
 .about .highlight {
@@ -977,7 +977,7 @@ section,
 }
 
 body {
-  font-family: Verdana, sans-serif;
+  font-family: var(--nav-font);
   margin: 0
 }
 
@@ -985,16 +985,10 @@ img {
   vertical-align: middle;
 }
 
-/* Slideshow container */
-.slideshow-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
 .mySlides img {
   width: 10%;
   height: 10%;
+  display: flex;
 }
 
 .mySlides {
@@ -1006,8 +1000,8 @@ img {
 /* Container for the gallery grid */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  /* 1 equal columns */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  /* 4 columns */
   gap: 5px;
   /* Space between images */
   justify-items: center;
@@ -1019,14 +1013,13 @@ img {
 .gallery-item {
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 5px;
 }
 
 /* Make the images fill the container */
 .gallery-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
   transition: transform 0.3s ease;
 }
 
@@ -1036,57 +1029,26 @@ img {
   /* Slight zoom effect on hover */
 }
 
-.mySlides p {
-  text-align: justify;
-  padding-left: 50px;
-}
-
-.mySlides.about.section {
-  margin-bottom: 0;
-}
-
-.mySlides h2 {
-  padding-left: 50px;
-}
-
-.mySlides h1 {
-  padding-left: 50px;
-}
-
-.mySlides>.section-title>p {
-  text-align: center;
-}
-
 .my-fade {
   animation-name: fade;
   animation-duration: 1.5s;
 }
 
-.row {
+.about .row, .journey .row {
+  text-align: justify;
   display: flex;
   flex-wrap: wrap;
-  /* Supaya elemen tidak keluar dari barisan */
-  justify-content: space-between;
-  /* Ruang antar elemen */
-  align-items: center;
-  /* Atur vertikal */
+}
+ 
+.about .row p, .journey .row p {
+  margin-top: 20px;
 }
 
-.row img {
+.about .row img, .journey .row img {
   flex: 1 1 auto;
   /* Gambar akan menyesuaikan ukuran */
-  max-width: 100%;
-  /* Batas ukuran maksimum */
-}
-
-.d-flex.row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-}
-
-.about .section-title {
-  padding-bottom: 0;
+  max-width: 20%;
+  padding-left: 0;
 }
 
 /* Next & previous buttons */
@@ -1096,7 +1058,7 @@ img {
   position: absolute;
   top: 50%;
   width: auto;
-  padding: 16px;
+  padding: 13px;
   margin-top: -22px;
   color: var(--accent-color);
   font-weight: bold;
@@ -1172,81 +1134,93 @@ img {
 }
 
 /* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
+@media only screen and (max-width: 1000px) {
 
   .prev,
   .next,
   .text {
     font-size: 11px
   }
+
+  .about h1 {
+    text-align: left;
+  }
+  
+  .about img, .journey img, .gallery-grid .img-icon {
+    display: none;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 0px 12px 0px 10px;
+  }
+
+  .journey .row-cols-1, .row-cols-md-1 {
+    padding: 0px 30px 0px 30px;
+  }
+
+  .mySlides {
+    padding-top: 50px;
+  }
 }
 
-@media (min-width: 100px) and (min-width: 400px) and (max-width: 768px) and (max-width: 900px) {
-  .slideshow-container .section-title {
-    text-align: center;
-    width: 100%;
-    height: 100%;;
-  }
+/*--------------------------------------------------------------
+# Location Section
+--------------------------------------------------------------*/
+.location .service-item {
+  position: relative;
+  height: 100%;
+  margin-bottom: 30px;
+}
 
-  .about .container,
-  .journey .container {
-    margin-top: 40px;
-    margin-left: 0;
-  }
+.location .service-item .icon {
+  margin-right: 20px;
+}
 
-  .about p,
-  .journey p {
-    font-size: 14px;
-    line-height: 1.5;
-    margin-right: 45px;
-  }
+.location .service-item .icon i {
+  color: var(--accent-color);
+  font-size: 40px;
+  line-height: 0;
+  transition: 0.3s;
+}
 
-  .about h2,
-  .journey h2 {
-    margin-right: 45px;
-  }
+.location .service-item:hover .icon i {
+  color: var(--accent-color);
+}
 
-  .about h1{
-    font-size: 30px;
-    margin-top: 20px;
-    margin-right: 45px;
-  }
-
-  .about img,
-  .journey img {
-    display: none;
-  } 
-
-  .about .d-flex.row,
-  .journey .d-flex.row {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: center;
-  }
-
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  /* Next & previous buttons */
-  .prev,
-  .next {
-    cursor: pointer;
-    position:absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -22px;
-    color: var(--accent-color);
-    font-weight: bold;
-    font-size: 18px;
+.location .service-item .title {
+  color: var(--heading-color);
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 18px;
     transition: 0.6s ease;
     border-radius: 0 3px 3px 0;
     user-select: none;
-  }
-  
+}
+
+.location .service-item .description {
+  font-size: 15px;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  margin-bottom: 10px;
+}
+
+.location .service-item .readmore {
+  display: flex;
+  align-items: center;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  transition: 0.3s;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.location .service-item .readmore i {
+  margin-left: 8px;
+}
+
+.location .service-item:hover .title,
+.location .service-item:hover .readmore,
+.location .service-item:hover .icon i {
+  color: var(--accent-color);
 }
 
 .info-container,
@@ -1309,7 +1283,8 @@ img {
       }
     }
 
-    /*--------------------------------------------------------------
+
+/*--------------------------------------------------------------
     # Employees Section
 --------------------------------------------------------------*/
 .employees {
@@ -1597,11 +1572,12 @@ img {
   font-weight: bold;
 }
 
+/* News Cards Responsive */
 .news-cards {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 20px;
 }
 
 .cardd {
@@ -1610,7 +1586,7 @@ img {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   text-align: left;
-  width: 30%;
+  width: 100%;
 }
 
 .cardd img {
@@ -1744,4 +1720,3 @@ h1 {
 padding-top: 100px;
 margin-left: 15px;
 }
-

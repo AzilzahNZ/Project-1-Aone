@@ -89,6 +89,7 @@
     slideIndex = 1;
     showSlides(slideIndex);
   });
+  
 
   /**
    * Apply .scrolled class to the body as the page is scrolled down
@@ -283,7 +284,7 @@
 
   function navmenuScrollspy() {
     // Deteksi jika berada di atas halaman (hero)
-    if (window.scrollY < 100) {
+    if (window.scrollY < 600) {
       document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
       document.querySelector('.navmenu a[href="#hero"]').classList.add('active');
       return;
@@ -293,7 +294,7 @@
       if (!navmenulink.hash) return;
       let section = document.querySelector(navmenulink.hash);
       if (!section) return;
-      let position = window.scrollY + 100;
+      let position = window.scrollY + 200;
       if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
         document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
         navmenulink.classList.add('active');
