@@ -50,20 +50,33 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    // Navigasi berbasis ID
+    // Navigasi berbasis ID (Smooth Scroll)
     document.querySelectorAll('nav a[href^="#"]').forEach((link) => {
       link.addEventListener("click", (e) => {
-        e.preventDefault(); // Mencegah scroll default
+        e.preventDefault(); // Menghentikan aksi default tautan
 
-        const targetId = link.getAttribute("href").substring(1); // Ambil ID
-        const targetElement = document.getElementById(targetId); // Cari elemen
+        const targetId = link.getAttribute("href").substring(1);
+        const targetElement = document.getElementById(targetId);
+        const isDropdown = link.closest('.dropdown');
 
         if (targetElement) {
-          // Scroll ke elemen target
+          // Scroll ke elemen target dengan smooth scrolling
           targetElement.scrollIntoView({
             behavior: "smooth",
             block: "start",
           });
+
+          // Jika tautan berada dalam dropdown, tutup dropdown
+          if (isDropdown) {
+            const dropdownParent = link.closest('.dropdown');
+            dropdownParent.classList.remove('active');
+            dropdownParent.querySelector('.dropdown-menu').classList.remove('dropdown-active');
+          }
+
+          // Pembaruan hash setelah scroll selesai
+          setTimeout(() => {
+            window.location.hash = `#${targetId}`;
+          }, 300);
 
           // Jika ID terkait slideshow, aktifkan slide
           const slides = Array.from(document.getElementsByClassName("mySlides"));
@@ -73,6 +86,29 @@
             currentSlide(slideIndex + 1);
           }
         }
+      });
+    });
+
+    // Mobile nav toggle
+    document.querySelectorAll('#navmenu a').forEach(navmenu => {
+      navmenu.addEventListener('click', () => {
+        if (document.querySelector('.mobile-nav-active')) {
+          mobileNavToogle();
+        }
+      });
+    });
+
+    // Handle dropdown toggle
+    document.querySelectorAll('.navmenu .toggle-dropdown').forEach(toggle => {
+      toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        const parent = this.parentNode;
+        parent.classList.toggle('active');
+        const dropdownMenu = parent.querySelector('.dropdown-menu');
+        if (dropdownMenu) {
+          dropdownMenu.classList.toggle('dropdown-active');
+        }
+        e.stopImmediatePropagation();
       });
     });
 
@@ -111,8 +147,8 @@
 
   function mobileNavToogle() {
     document.querySelector('body').classList.toggle('mobile-nav-active');
-    mobileNavToggleBtn.classList.toggle('bi-list');
-    mobileNavToggleBtn.classList.toggle('bi-x');
+    document.querySelector('.mobile-nav-toggle').classList.toggle('bi-list');
+    document.querySelector('.mobile-nav-toggle').classList.toggle('bi-x');
   }
   mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
 
