@@ -1599,8 +1599,8 @@ h1 {
 }
 
 .news-image {
-  width: 720px;
-  height: 400px;
+  width: 100%;
+  height: auto;
   object-fit: cover;
   margin: 15px 0;
   border-radius: 8px;
@@ -1626,9 +1626,9 @@ h1 {
 }
 
 .more-news img {
-  width: 30%;
+  width: 100%;
+  height: auto;
   border-radius: 5px;
-  margin-bottom: 10px;;
 }
 
 .thumbnail {
@@ -1671,5 +1671,280 @@ h1 {
 
 .main-seemore { 
 padding-top: 100px;
-margin-left: 15px;
+/* margin-left: 15px; */
+}
+
+@media (max-width: 768px) {
+  .news-content {
+    font-size: 14px;
+  }
+  .see-more-btn {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+
+/* Navmenu - Desktop */
+@media (min-width: 1200px) {
+  .navmenu1 {
+    padding: 0;
+  }
+
+  .navmenu1 ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+  }
+
+  .navmenu1 li {
+    position: relative;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    transition: 0.3s;
+  }
+
+  .navmenu1 a,
+  .navmenu1 a:focus {
+    color: var(--nav-color);
+    padding: 18px 15px;
+    font-size: 16px;
+    font-family: var(--nav-font);
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: 0.3s;
+  }
+
+  .navmenu1 a i,
+  .navmenu1 a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+    transition: 0.3s;
+  }
+
+  .navmenu1 li:last-child a {
+    padding-right: 0;
+  }
+
+  .navmenu1 button {
+    border: 2px;
+    border-radius: 2px;
+    color: var(--surface-color);
+    background: transparent;
+  }
+
+  .navmenu1 li:hover>a,
+  .navmenu1 .active,
+  .navmenu1 .active:focus {
+    border: 2px solid var(--nav-hover-color);
+    border-radius: 4px;
+    padding: 5px 15px;
+    background: transparent;
+    transition: 0.3s;
+  }
+
+  .navmenu1 .dropdown ul {
+    margin: 10px;
+    padding: 10px 0;
+    background: var(--nav-dropdown-background-color);
+    display: block;
+    position: absolute;
+    visibility: hidden;
+    left: -30px;
+    top: 130%;
+    opacity: 0;
+    transition: 0.3s;
+    border-radius: 4px;
+    z-index: 99;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .navmenu1 .dropdown ul li {
+    min-width: 150px;
+  }
+
+  .navmenu .dropdown ul li a button {
+    min-width: 100px;
+    align-items: center;
+  }
+
+  .navmenu1 .dropdown ul a {
+    padding: 10px 20px;
+    font-size: 15px;
+    text-transform: none;
+    color: var(--nav-dropdown-color);
+  }
+
+  .navmenu1 .dropdown ul a i {
+    font-size: 12px;
+  }
+
+  .navmenu1 .dropdown ul a:hover,
+  .navmenu1 .dropdown ul .active:hover,
+  .navmenu1 .dropdown ul li:hover>a>button {
+    color: var(--nav-dropdown-color);
+    background: var(--nav-dropdown-hover-color);
+  }
+
+  .navmenu1 .dropdown:hover>ul {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
+  }
+
+  .navmenu1 .dropdown .dropdown ul {
+    top: 0;
+    left: -90%;
+    visibility: hidden;
+  }
+
+  .navmenu1 .dropdown .dropdown:hover>ul {
+    opacity: 1;
+    top: 0;
+    left: -100%;
+    visibility: visible;
+  }
+  
+}
+
+/* Navmenu - Mobile */
+@media (max-width: 1199px) {
+  .mobile-nav-toggle {
+    color: var(--nav-color);
+    font-size: 28px;
+    line-height: 0;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .navmenu1 {
+    padding: 0;
+    z-index: 9997;
+  }
+
+  .navmenu1 ul {
+    display: none;
+    list-style: none;
+    position: absolute;
+    inset: 60px 20px 20px 20px;
+    padding: 10px 0;
+    margin: 0;
+    border-radius: 6px;
+    background-color: var(--nav-mobile-background-color);
+    overflow-y: auto;
+    transition: 0.3s;
+    z-index: 9998;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .navmenu1 button {
+    border: 2px;
+    border-radius: 2px;
+    color: var(--surface-color);
+    background: transparent;
+    font-style: var(--nav-dropdown-background-color);
+  }
+
+  .navmenu1 a,
+  .navmenu1 a:focus {
+    color: var(--nav-dropdown-color);
+    padding: 15px 20px;
+    font-family: var(--nav-font);
+    font-size: 17px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: 0.3s;
+  }
+
+  .navmenu1 a i,
+  .navmenu1 a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: 0.3s;
+    background-color: var(--surface-color);
+    /* color: var(--nav-dropdown-color);
+    background: var(--nav-dropdown-hover-color); */
+  }
+
+  .navmenu1 a i:hover,
+  .navmenu1 a:focus i:hover {
+    background-color: var(--surface-color);
+    color: var(--contrast-color);
+  }
+
+  .navmenu1 a:hover,
+  .navmenu1 .active,
+  .navmenu1 .active:focus {
+    color: var(--background-color);
+    background-color: var(--nav-hover-color);
+  }
+
+  .navmenu1 .active i,
+  .navmenu1 .active:focus i {
+    background-color: var(--surface-color);
+    color: var(--contrast-color);
+    transform: rotate(180deg);
+  }
+
+  .navmenu1 .dropdown ul {
+    position: static;
+    display: none;
+    z-index: 99;
+    padding: 10px 0;
+    margin: 10px 20px;
+    border: 3px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    box-shadow: none;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .navmenu1 .dropdown ul ul {
+    background-color: rgba(33, 37, 41, 0.1);
+  }
+
+  .navmenu1 .dropdown>.dropdown-active {
+    display: block;
+    background-color: rgba(33, 37, 41, 0.03);
+  }
+
+  .mobile-nav-active {
+    overflow: hidden;
+  }
+
+  .mobile-nav-active .mobile-nav-toggle {
+    color: #fff;
+    position: absolute;
+    font-size: 32px;
+    top: 15px;
+    right: 15px;
+    margin-right: 0;
+    z-index: 9999;
+  }
+
+  .mobile-nav-active .navmenu1 {
+    position: fixed;
+    overflow: hidden;
+    inset: 0;
+    background: rgba(33, 37, 41, 0.8);
+    transition: 0.3s;
+  }
+
+  .mobile-nav-active .navmenu1>ul {
+    display: block;
+  }
 }
