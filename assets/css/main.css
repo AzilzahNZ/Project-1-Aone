@@ -1148,7 +1148,7 @@ img {
 
 .active,
 .dot:hover {
-  background-color: #717171;
+  background-color: var(--accent-color);
 }
 
 /* Fading animation */
@@ -1169,7 +1169,6 @@ img {
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 1200px) {
-
   .prev,
   .next,
   .text {
@@ -1202,19 +1201,13 @@ img {
 /*--------------------------------------------------------------
 # Location Section
 --------------------------------------------------------------*/
-.location .section-title {
-  padding-bottom: 100px;
-  margin-bottom: 80px;
-  padding-top: 0;
-}
 
 .info-container,
     .map-container {
       max-width: 600px;
       background-color: #ffffff;
-
       color: black; /* Warna teks hitam untuk kontainer */
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 100px rgba(0, 0, 0, 0.1);
       border-radius: 5px;
       padding: 20px;
       margin: 0 auto;
@@ -1375,7 +1368,7 @@ img {
   width: 12px;
   height: 12px;
   opacity: 1;
-  background-color: color-mix(in srgb, var(--default-color), transparent 85%);
+  background-color: var(--surface-color);
 }
 
 .employees .swiper-pagination .swiper-pagination-bullet-active {
@@ -1717,6 +1710,10 @@ padding-top: 100px;
 @media (max-width: 768px) {
   .news-content {
     font-size: 14px;
+    text-align: justify;
+  }
+  .more-news {
+    text-align: justify;
   }
   .see-more-btn {
     font-size: 12px;
