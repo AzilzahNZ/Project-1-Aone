@@ -69,6 +69,9 @@
   scroll-behavior: smooth;
 }
 
+* {
+  box-sizing: border-box;
+}
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
@@ -501,14 +504,17 @@ h6 {
 /* Bagian Kiri: Logo dan Deskripsi */
 .footer .d-flex {
   display: flex;
-  align-items: flex-start;
   margin-left: 50px;
 }
 
 .footer .footer-logo {
-  max-width: 40px;
-  /* Sesuaikan ukuran logo */
+  width: auto;
+  max-height: 80px;
   margin-right: 15px;
+}
+
+.footer .d-flex p {
+  text-align: justify;
 }
 
 .footer .footer-title {
@@ -549,8 +555,8 @@ h6 {
 }
 
 .footer img {
-  width: 50px;
-  height: auto;
+  width: 200px;
+  height: 50px;
 }
 
 .footer .highlight {
@@ -644,7 +650,30 @@ h6 {
   color: var(--accent-color);
 }
 
-@media (max-width: 800px) {
+/* Perangkat dengan lebar layar 1200px dan di bawahnya */
+@media screen and (max-width: 1200px) {
+  .footer .d-flex {
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+
+  .footer p {
+    width: 80%;
+  }
+
+  .footer .row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer .footer-logo {
+    max-width: 70vw;
+    max-height: 70px;
+  }
+}
+
+/* Perangkat dengan lebar layar 768px dan di bawahnya */
+@media screen and (max-width: 768px) {
   .footer .d-flex {
     margin-left: 0;
     align-items: justify;
@@ -652,7 +681,11 @@ h6 {
   }
 
   .footer p {
-    width: 100%;
+    width: 80%;
+  }
+
+  .footer a {
+    width: 80%;
   }
 
   .footer .row {
@@ -1037,6 +1070,9 @@ img {
   position: relative;
   overflow: hidden;
   border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 20px;
 }
 
 /* Make the images fill the container */
