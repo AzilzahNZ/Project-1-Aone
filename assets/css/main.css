@@ -25,7 +25,7 @@
   /* Default color used for the majority of the text content across the entire website */
   --heading-color: #000000;
   /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #FCA311;
+  --accent-color: #9f2323;
   /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff;
   /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
@@ -37,7 +37,7 @@
 :root {
   --nav-color: rgba(255, 255, 255, 0.6);
   /* The default color of the main navmenu links */
-  --nav-hover-color: #FCA311;
+  --nav-hover-color: #fc1e1e;
   /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #797676e9;
   /* Used as the background color for mobile navigation menu */
@@ -45,7 +45,7 @@
   /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
   --nav-dropdown-color: #000000;
   /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #FCA311;
+  --nav-dropdown-hover-color: #fc1e1e;
   /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
@@ -160,8 +160,6 @@ h6 {
 .header {
   position: fixed;
   --background-color: rgba(0, 0, 0, 0);
-  --default-color: #ffffff;
-  --heading-color: #ffffff;
   color: var(--default-color);
   background-color: var(--background-color);
   padding: 10px 0;
@@ -192,8 +190,16 @@ h6 {
 /* Global Header on Scroll
 ------------------------------*/
 .scrolled .header {
-  --background-color: rgba(0, 0, 0, 0.8);
+  --background-color: #c3c3c3;
   padding: 2px;
+}
+
+.scrolled .header button {
+  color: var(--default-color);
+}
+
+.scrolled .header a {
+  color: var(--default-color);
 }
 
 /*--------------------------------------------------------------
@@ -222,7 +228,7 @@ h6 {
 
   .navmenu a,
   .navmenu a:focus {
-    color: var(--nav-color);
+    color: var(--surface-color);
     padding: 18px 15px;
     font-size: 16px;
     font-family: var(--nav-font);
@@ -302,7 +308,7 @@ h6 {
   .navmenu .dropdown ul a:hover,
   .navmenu .dropdown ul .active:hover,
   .navmenu .dropdown ul li:hover>a>button {
-    color: var(--nav-dropdown-color);
+    color: var(--surface-color);
     background: var(--nav-dropdown-hover-color);
   }
 
@@ -393,8 +399,6 @@ h6 {
     border-radius: 50%;
     transition: 0.3s;
     background-color: var(--surface-color);
-    /* color: var(--nav-dropdown-color);
-    background: var(--nav-dropdown-hover-color); */
   }
 
   .navmenu a i:hover,
@@ -468,8 +472,8 @@ h6 {
 # Global Footer
 --------------------------------------------------------------*/
 .footer {
-  color: var(--background-color);
-  background-color: var(--default-color);
+  color: var(--default-color);
+  background-color: #c3c3c3;
   font-size: 14px;
   text-align: center;
   padding: 20px 40px;
@@ -540,12 +544,11 @@ h6 {
 .footer .contact-info li i {
   font-size: 18px;
   color: var(--accent-color);
-  /* Ikon dengan warna oranye */
   margin-right: 10px;
 }
 
 .footer a {
-  color: var(--background-color);
+  color: var(--default-color);
   text-decoration: none;
   text-align: left;
 }
@@ -564,7 +567,7 @@ h6 {
 }
 
 .footer h2 {
-  color: var(--background-color);
+  color: var(--default-color);
   font-size: 20px;
   font-weight: 700;
   position: relative;
@@ -603,7 +606,7 @@ h6 {
 }
 
 .footer .social-media a {
-  color: #ffa500;
+  color: var(--accent-color);
   /* Warna ikon */
   text-decoration: none;
   /* Hilangkan garis bawah */
@@ -917,10 +920,10 @@ section,
   margin-top: 5px;
   padding: 5px 20px;
   background-color: var(--accent-color);
-  color: var(--contrast-color);
+  color: var(--default-color);
   transition: 0.3s;
   border-radius: 5px;
-  border: 2px solid var(--contrast-color);
+  border: 2px solid var(--default-color);
 }
 
 .hero button:hover {
@@ -1073,6 +1076,7 @@ img {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   padding: 20px;
+  
 }
 
 /* Make the images fill the container */
@@ -1257,7 +1261,7 @@ img {
     }
 
     .info-container h2 {
-      color: #f39c12;
+      color: var(--accent-color);
       font-weight: bold;
       display: flex;
       align-items: center;
@@ -1267,13 +1271,13 @@ img {
 
     .info-container .btn {
       margin-top: 10px;
-      background-color: #d87c04;
+      background-color: var(--accent-color);
       color: white;
       border: none;
     }
 
     .info-container .btn:hover {
-      background-color: #d87c04;
+      background-color: var(--accent-color);
     }
 
     .map-container iframe {
@@ -1361,7 +1365,7 @@ img {
 }
 
 .employees .testimonial-item .stars i {
-  color: #ffc107;
+  color: var(--accent-color);
   margin: 0 1px;
 }
 
@@ -1542,6 +1546,10 @@ img {
   color: var(--accent-color); /* Accent color */
 }
 
+#partnershipCarousel .card-body {
+  border-top: #000000 solid 3px;
+}
+
 /* Tambahan untuk Responsif */
 @media (max-width: 768px) {
   .partnership .section-title h2 {
@@ -1641,7 +1649,7 @@ img {
   position: absolute;
   bottom: 15px;
   right: 15px;
-  background-color: #ff9f1c; /* Orange color */
+  background-color: var(--accent-color);
   color: #fff;
   border: none;
   padding: 8px 12px;
@@ -1653,7 +1661,8 @@ img {
 }
 
 .see-more:hover {
-  background-color: #d87c04;
+  background-color: var(--accent-color);
+
 }
 
 /* Artikel Utama */
@@ -1721,7 +1730,7 @@ h1 {
 .see-more-btn {
   display: inline-block;
   text-decoration: none;
-  background-color: #ff9800;
+  background-color: var(--accent-color);
   color: #fff;
   padding: 8px 15px;
   border-radius: 5px;
@@ -1730,7 +1739,7 @@ h1 {
 }
 
 .see-more-btn:hover {
-  background-color: #e68900;
+  background-color: var(--accent-color);
   color: #fff;
 }
 
@@ -1740,7 +1749,7 @@ h1 {
 
 #seemore  {
   padding: 1px;
-  background-color: black;
+  background-color: #c3c3c3;
 }
 
 .main-seemore { 
