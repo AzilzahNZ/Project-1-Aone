@@ -37,7 +37,7 @@
 :root {
   --nav-color: rgba(255, 255, 255, 0.6);
   /* The default color of the main navmenu links */
-  --nav-hover-color: #fc1e1e;
+  --nav-hover-color: #9d2323;
   /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #797676e9;
   /* Used as the background color for mobile navigation menu */
@@ -45,7 +45,7 @@
   /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
   --nav-dropdown-color: #000000;
   /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #fc1e1e;
+  --nav-dropdown-hover-color: #9d2323;
   /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
@@ -106,7 +106,7 @@ h6 {
 ------------------------------*/
 .php-email-form .error-message {
   display: none;
-  background: #df1529;
+  background: #9d2323;
   color: #ffffff;
   text-align: left;
   padding: 15px;
@@ -1620,10 +1620,12 @@ img {
 
 /* News Cards Responsive */
 .news-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
   padding: 20px;
+  width: 100%;
 }
 
 .cardd {
@@ -1767,6 +1769,31 @@ h1 {
 .main-seemore { 
 padding-top: 100px;
 /* margin-left: 15px; */
+}
+
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+  
+  .main-news, .more-news {
+    width: 100%;
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+
+  .news-cards {
+    padding: 10px;
+    gap: 1rem;
+  }
+  
+  .cardd {
+    flex: 0 0 90%; /* Don't grow, don't shrink, take 90% width */
+    max-width: 90%; /* Limit to 90% of container width */
+    margin: 0 auto; /* Center the card */
+  }
 }
 
 @media (max-width: 768px) {
